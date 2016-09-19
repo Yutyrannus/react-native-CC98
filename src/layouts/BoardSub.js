@@ -10,7 +10,8 @@ import {
   ListView,
   TouchableOpacity,
   RefreshControl,
-  BackAndroid
+  BackAndroid,
+  TouchableHighlight
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import 'whatwg-fetch';
@@ -100,15 +101,18 @@ class BoardSub extends Component {
             />
           }
           renderRow={(rowData) =>
-            <TouchableOpacity
+            <TouchableHighlight
               style={styles.button}
               onPress={()=>this._navigate(rowData.id, rowData.name)}>
               <View style={boardListStyle.list} >
-                <Text style={boardListStyle.text}>
+                <Text style={boardListStyle.name}>
                   {rowData.name}
                 </Text>
+                <Text style={boardListStyle.count}>
+                  {rowData.todayPostCount}
+                </Text>
               </View>
-            </TouchableOpacity>
+            </TouchableHighlight>
 
             }
         />

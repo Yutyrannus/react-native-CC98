@@ -8,13 +8,13 @@ export default {
 
   text: {
     color: '#333',
-    fontSize: 16,
-    textAlign: 'left',
+    marginVertical: 10
   },
 
   info: {
     flex: 1,
     flexDirection: 'row',
+    alignItems: 'flex-end'
   },
 
   floor: {

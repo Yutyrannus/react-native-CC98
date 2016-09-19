@@ -10,7 +10,8 @@ import {
   ScrollView,
   ListView,
   TouchableOpacity,
-  RefreshControl
+  RefreshControl,
+  TouchableHighlight,
 } from 'react-native';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 import 'whatwg-fetch';
@@ -85,14 +86,17 @@ class BoardRoot extends Component {
           enableEmptySections
           dataSource={this.state.dataSource}
           renderRow={(rowData) =>
-            <TouchableOpacity
+            <TouchableHighlight
               onPress={()=>this._navigate(rowData.id, rowData.name)}>
               <View style={boardListStyle.list} >
-                <Text style={boardListStyle.text}>
+                <Text style={boardListStyle.name}>
                   {rowData.name}
                 </Text>
+                <Text style={boardListStyle.count}>
+                  {rowData.todayPostCount}
+                </Text>
               </View>
-            </TouchableOpacity>
+            </TouchableHighlight>
 
             }
         />

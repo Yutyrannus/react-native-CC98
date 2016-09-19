@@ -11,7 +11,8 @@ import {
   TouchableOpacity,
   RefreshControl,
   BackAndroid,
-  TouchableHighlight
+  TouchableHighlight,
+  WebView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
 import 'whatwg-fetch';
@@ -19,7 +20,7 @@ import config from '../config'
 import topicStyle from '../styles/topicStyle'
 import refreshStyle from '../styles/refreshStyle'
 import moment from 'moment'
-//import ubb from '../lib/ubb'
+import ubb from '../lib/ubb'
 
 var _navigator
 BackAndroid.addEventListener('hardwareBackPress', function() {
@@ -99,12 +100,11 @@ class Topic extends Component {
   _renderRow(rowData) {
     let timeFromNow = moment(rowData.time).fromNow()
     //let content = ubb(rowData.content)
+    let content = rowData.content
     return (
       <View style={topicStyle.list}>
         <Text>{rowData.authorName || '匿名'}</Text>
-        <Text style={topicStyle.text}>
-          {rowData.content}
-        </Text>
+        <Text style={topicStyle.text}>{content}</Text>
         <View style={topicStyle.info}>
           <Text style={topicStyle.floor}>
             第{rowData.floor}楼
@@ -154,30 +154,6 @@ class Topic extends Component {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  boardRoot: {
-    borderBottomWidth: 1,
-    backgroundColor: 'white',
-    borderBottomColor: 'rgba(0, 0, 0, 0)'
-  },
-
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    color: '#333',
-    fontSize: 20,
-    textAlign: 'left',
-    margin: 15,
-    marginLeft: 30
-  },
   toolbarContainer: {
     height: 20,
     backgroundColor: '#387ef5'

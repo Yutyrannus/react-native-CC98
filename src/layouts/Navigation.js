@@ -63,8 +63,8 @@ getInitialState: function() {
             tabBarUnderlineStyle={{backgroundColor: 'rgba(200,200,250,0.8)'}}
             >
              <BoardRoot navigator={this.props.navigator} tabLabel="板块列表" />
-             <New navigator={this.props.navigator} tabLabel="查看新帖" />
              <Hot navigator={this.props.navigator} tabLabel="热门话题" />
+             <New navigator={this.props.navigator} tabLabel="查看新帖" />
            </ScrollableTabView>
          </View>
 
